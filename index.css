@@ -1,0 +1,92 @@
+@import url("https://fonts.cdnfonts.com/css/ica-rubrik-black");
+@import url("https://fonts.google.com/share?selection.family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900");
+.banner {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+}
+.banner .slider {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: 10%;
+  left: calc(50% - 100px);
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 35s linear infinite;
+}
+@keyframes autoRun {
+  from {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+  }
+}
+.banner .slider .item {
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: rotateY(
+      calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+    )
+    translateZ(550px);
+}
+
+.banner .slider .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.banner .content {
+  position: absolute;
+  bottom: 0;
+  top: 30%;
+  width: 100vw;
+  height: 50%;
+  padding-bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  position: absolute;
+  font-family: "ICA Rubrik";
+  text-align: center;
+  font-size: 10em;
+  line-height: 1em;
+  color: #25283b;
+
+  text-shadow: 2px 2px 5px white;
+}
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+  .banner {
+    width: 100vw;
+  }
+  .banner .slider {
+    width: 120px;
+    height: 200px;
+    left: calc(50% - 75px);
+  }
+  h1 {
+    font-size: 6em;
+  }
+}
+
+/* For mobile screens */
+@media (max-width: 480px) {
+  .banner {
+    width: 100vw;
+  }
+  .banner .slider {
+    width: 80px;
+    height: 160px;
+    left: calc(50% - 60px);
+  }
+  h1 {
+    font-size: 4em;
+  }
+}
